@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,13 @@ import { VerticalNavGroupService } from './providers/vertical-nav-group.service'
 import { VerticalNavService } from './providers/vertical-nav.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
+import {
+  componentPrimaryEnterCurve,
+  componentPrimaryEnterTiming,
+  componentPrimaryLeaveCurve,
+  componentPrimaryLeaveTiming,
+} from '../../utils/animations/constants';
+
 const EXPANDED_STATE: string = 'expanded';
 const COLLAPSED_STATE: string = 'collapsed';
 
@@ -26,7 +33,12 @@ const COLLAPSED_STATE: string = 'collapsed';
     trigger('clrExpand', [
       state(EXPANDED_STATE, style({ height: '*' })),
       state(COLLAPSED_STATE, style({ height: 0, 'overflow-y': 'hidden', visibility: 'hidden' })),
-      transition(`${EXPANDED_STATE} <=> ${COLLAPSED_STATE}`, animate('0.2s ease-in-out')),
+      transition(`${COLLAPSED_STATE} => ${EXPANDED_STATE}`, [
+        animate(`${componentPrimaryEnterTiming} ${componentPrimaryEnterCurve}`),
+      ]),
+      transition(`${EXPANDED_STATE} => ${COLLAPSED_STATE}`, [
+        animate(`${componentPrimaryLeaveTiming} ${componentPrimaryLeaveCurve}`),
+      ]),
     ]),
   ],
   host: { class: 'nav-group' },

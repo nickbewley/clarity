@@ -21,6 +21,12 @@ import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ClrCommonStringsService } from '../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../utils/id-generator/id-generator.service';
 import { ScrollingService } from '../utils/scrolling/scrolling-service';
+import {
+  componentPrimaryEnterCurve,
+  componentPrimaryEnterTiming,
+  componentPrimaryLeaveCurve,
+  componentPrimaryLeaveTiming,
+} from '../utils/animations/constants';
 
 @Component({
   selector: 'clr-modal',
@@ -34,13 +40,19 @@ import { ScrollingService } from '../utils/scrolling/scrolling-service';
   ],
   animations: [
     trigger('fadeDown', [
-      transition('* => false', [style({ opacity: 0, transform: 'translate(0, -25%)' }), animate('0.2s ease-in-out')]),
-      transition('false => *', [animate('0.2s ease-in-out', style({ opacity: 0, transform: 'translate(0, -25%)' }))]),
+      transition('* => false', [
+        style({ opacity: 0, transform: 'translate(0, -25%)' }),
+        animate(`${componentPrimaryEnterTiming} ${componentPrimaryEnterCurve}`),
+      ]),
     ]),
     trigger('fade', [
-      transition('void => *', [style({ opacity: 0 }), animate('0.2s ease-in-out', style({ opacity: 0.85 }))]),
-      transition('* => void', [animate('0.2s ease-in-out', style({ opacity: 0 }))]),
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(`${componentPrimaryEnterTiming} ${componentPrimaryEnterCurve}`, style({ opacity: 0.85 })),
+      ]),
     ]),
+
+    //   TODO: leave animation : animate(`${componentPrimaryLeaveTiming} ${componentPrimaryLeaveCurve}`
   ],
   providers: [UNIQUE_ID_PROVIDER],
 })

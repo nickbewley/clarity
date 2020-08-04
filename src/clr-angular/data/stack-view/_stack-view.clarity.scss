@@ -264,7 +264,8 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       }
       > .stack-block-label,
       > .stack-block-content {
-        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        transition: background-color $component-primary-enter-timing $component-primary-enter-curve,
+          color $component-primary-enter-timing $component-primary-enter-curve;
       }
 
       &.on-focus:not(.stack-block-expanded),
@@ -326,14 +327,15 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     // TODO: Clean up if not being used
     .stack-block-expandable > .stack-block-content {
       #{$styledInputs} {
-        transition: background-size 0.2s ease, border-bottom-color 0.2s ease-in-out;
+        transition: background-size $component-primary-enter-timing $component-primary-enter-curve,
+          border-bottom-color $component-primary-enter-timing $component-primary-enter-curve;
       }
       .select {
         select {
-          transition: border-bottom-color 0.2s ease-in-out;
+          transition: border-bottom-color $component-primary-enter-timing $component-primary-enter-curve;
         }
         &::after {
-          transition: color 0.2s ease-in-out;
+          transition: color $component-primary-enter-timing $component-primary-enter-curve;
         }
       }
     }

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -11,13 +11,55 @@
  * animate.css, if we want.
  */
 
+// ———— Old Vars
 $clr-animation-duration: 0.2s;
 $clr-animation-easing: ease-in-out;
 
+// ———— New Vars
+// ———— Atomic Animations
+// primary
+$atomic-primary-enter-curve: cubic-bezier(0, 1.5, 0.5, 1);
+$atomic-primary-enter-timing: 0.2s;
+$atomic-primary-leave-curve: cubic-bezier(0, 0.99, 0, 0.99);
+$atomic-primary-leave-timing: 0.2s;
+
+// secondary
+$atomic-secondary-enter-curve: cubic-bezier(0, 1.5, 0.5, 1);
+$atomic-secondary-enter-timing: 0.4s;
+$atomic-secondary-leave-curve: cubic-bezier(0, 1.5, 0.5, 1);
+$atomic-secondary-leave-timing: 0.1s;
+
+// –——— Component Animations
+// primary
+$component-primary-enter-curve: cubic-bezier(0, 0.99, 0, 0.99);
+$component-primary-enter-timing: 0.4s;
+$component-primary-leave-curve: cubic-bezier(0, 0.99, 0, 0.99);
+$component-primary-leave-timing: 0.3s;
+
+// secondary
+// todo
+
+// –——— Page Animations
+// primary
+$page-primary-enter-curve: cubic-bezier(0, 0.99, 0, 0.99);
+$page-primary-enter-timing: 0.25s;
+$page-primary-leave-curve: cubic-bezier(0, 0.99, 0, 0.99);
+$page-primary-leave-timing: 0.2s;
+
+// ———— Progress Animations
+// primary
+$progress-primary-curve: cubic-bezier(0.17, 0.4, 0.8, 0.79);
+$progress-primary-timing: 0.79s;
+
+// secondary
+$progress-secondary-curve: cubic-bezier(0.34, 0.01, 0.39, 1);
+$progress-secondary-timing: 2s;
+
+// ———— Old Mixins
 @include exports('animations.clarity') {
   .fade {
     opacity: 0;
-    transition: opacity $clr-animation-duration $clr-animation-easing;
+    transition: opacity $component-primary-enter-timing $component-primary-enter-curve;
     will-change: opacity;
 
     &.in {
@@ -28,8 +70,8 @@ $clr-animation-easing: ease-in-out;
   .fadeDown {
     opacity: 0;
     transform: translate(0, -25%);
-    transition: opacity $clr-animation-duration $clr-animation-easing,
-      transform $clr-animation-duration $clr-animation-easing;
+    transition: opacity $component-primary-enter-timing $component-primary-enter-curve,
+      transform $component-primary-enter-timing $component-primary-enter-curve;
     will-change: opacity, transform;
 
     &.in {

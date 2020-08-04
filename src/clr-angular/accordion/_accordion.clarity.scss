@@ -3,6 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './properties.accordion';
+@import '../utils/animations/animations.clarity';
 
 @include exports('accordion.clarity') {
   .clr-accordion {
@@ -27,7 +28,7 @@
       $clr-accordion-header-background-color,
       $clr-use-custom-properties
     );
-    transition: all 200ms ease-in-out;
+    transition: all $component-primary-enter-timing $component-primary-enter-curve;
     border-bottom: 0;
     width: 100%;
     @include css-var(font-size, clr-accordion-header-font-size, $clr_baselineRem_0_65, $clr-use-custom-properties);
@@ -144,7 +145,7 @@
   }
 
   .clr-accordion-angle {
-    transition: all 200ms ease-in-out;
+    transition: all $component-primary-enter-timing $component-primary-enter-curve;
   }
 
   .clr-accordion-error-icon,

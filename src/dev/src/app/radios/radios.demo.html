@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -21,6 +21,24 @@
   <input type="radio" clrRadio />
   <label>Test</label>
 </clr-radio-wrapper>
+
+<form class="clr-form clr-form-horizontal">
+    <div class="clr-form-control">
+        <label class="clr-control-label">Test</label>
+        <div class="clr-control-container">
+            <div class="clr-radio-wrapper">
+                <input type="radio" id="test-radio-1" name="test-radio" class="clr-radio"/>
+                <label class="clr-control-label" for="test-radio-1">A label</label>
+            </div>
+            <div class="clr-radio-wrapper">
+                <input type="radio" id="test-radio-2" name="test-radio" class="clr-radio"/>
+                <label class="clr-control-label" for="test-radio-2">A label</label>
+            </div>
+        </div>
+    </div>
+
+</form>
+
 
 <!-- Wrapper with id -->
 <clr-radio-wrapper>

@@ -37,6 +37,12 @@ import { TreeNodeModel } from './models/tree-node.model';
 import { TreeFeaturesService, TREE_FEATURES_PROVIDER } from './tree-features.service';
 import { TreeFocusManagerService } from './tree-focus-manager.service';
 import { ClrTreeNodeLink } from './tree-node-link';
+import {
+  componentPrimaryEnterCurve,
+  componentPrimaryEnterTiming,
+  componentPrimaryLeaveCurve,
+  componentPrimaryLeaveTiming,
+} from '../../utils/animations/constants';
 
 const LVIEW_CONTEXT_INDEX = 8;
 
@@ -51,8 +57,14 @@ const LVIEW_CONTEXT_INDEX = 8;
   ],
   animations: [
     trigger('toggleChildrenAnim', [
-      transition('collapsed => expanded', [style({ height: 0 }), animate(200, style({ height: '*' }))]),
-      transition('expanded => collapsed', [style({ height: '*' }), animate(200, style({ height: 0 }))]),
+      transition('collapsed => expanded', [
+        style({ height: 0 }),
+        animate(`${componentPrimaryEnterTiming} ${componentPrimaryEnterCurve}`, style({ height: '*' })),
+      ]),
+      transition('expanded => collapsed', [
+        style({ height: '*' }),
+        animate(`${componentPrimaryLeaveTiming} ${componentPrimaryLeaveCurve}`, style({ height: 0 })),
+      ]),
       state('expanded', style({ height: '*', 'overflow-y': 'visible' })),
       state('collapsed', style({ height: 0 })),
     ]),

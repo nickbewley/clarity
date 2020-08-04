@@ -1,10 +1,12 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import '../../utils/animations/animations.clarity';
+
 @mixin clr-toggle-transition-styles() {
-  transition-duration: $clr-toggle-transition-time;
-  transition-timing-function: $clr-toggle-transition-animation;
+  transition-duration: $atomic-secondary-enter-timing;
+  transition-timing-function: $atomic-secondary-enter-curve;
 }
 
 @import '../../button/properties.toggles';
